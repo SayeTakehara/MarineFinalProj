@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/titleFragment">
+
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="com.example.marinefinalproj.TitleFragment"
+        android:label="fragment_title"
+        tools:layout="@layout/fragment_title" >
+        <action
+            android:id="@+id/action_titleFragment_to_minigameOneFragment"
+            app:destination="@id/minigameOneFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_minigameTwoFragment"
+            app:destination="@id/minigameTwoFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_minigameThreeFragment"
+            app:destination="@id/minigameThreeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/minigameOneFragment"
+        android:name="com.example.marinefinalproj.MinigameOneFragment"
+        android:label="fragment_minigame_one"
+        tools:layout="@layout/fragment_minigame_one" />
+    <fragment
+        android:id="@+id/minigameTwoFragment"
+        android:name="com.example.marinefinalproj.MinigameTwoFragment"
+        android:label="fragment_minigame_two"
+        tools:layout="@layout/fragment_minigame_two" >
+        <action
+            android:id="@+id/action_minigameTwoFragment_to_factPageFragment"
+            app:destination="@id/factPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/minigameThreeFragment"
+        android:name="com.example.marinefinalproj.MinigameThreeFragment"
+        android:label="fragment_minigame_three"
+        tools:layout="@layout/fragment_minigame_three" />
+    <fragment
+        android:id="@+id/factPageFragment"
+        android:name="com.example.marinefinalproj.FactPageFragment"
+        android:label="fragment_fact_page"
+        tools:layout="@layout/fragment_fact_page" />
+</navigation>
