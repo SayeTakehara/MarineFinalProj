@@ -15,7 +15,7 @@ class MinigameTwoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMinigameOneBinding.inflate(inflater, container, false)
+        _binding = FragmentMinigameTwoBinding.inflate(inflater, container, false)
         val rootView = binding.root
         return rootView
     }

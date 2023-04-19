@@ -24,7 +24,11 @@
         android:id="@+id/minigameOneFragment"
         android:name="com.example.marinefinalproj.MinigameOneFragment"
         android:label="fragment_minigame_one"
-        tools:layout="@layout/fragment_minigame_one" />
+        tools:layout="@layout/fragment_minigame_one" >
+        <action
+            android:id="@+id/action_minigameOneFragment_to_factPageFragment"
+            app:destination="@id/factPageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/minigameTwoFragment"
         android:name="com.example.marinefinalproj.MinigameTwoFragment"
@@ -38,10 +42,27 @@
         android:id="@+id/minigameThreeFragment"
         android:name="com.example.marinefinalproj.MinigameThreeFragment"
         android:label="fragment_minigame_three"
-        tools:layout="@layout/fragment_minigame_three" />
+        tools:layout="@layout/fragment_minigame_three" >
+        <action
+            android:id="@+id/action_minigameThreeFragment_to_factPageFragment"
+            app:destination="@id/factPageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/factPageFragment"
         android:name="com.example.marinefinalproj.FactPageFragment"
         android:label="fragment_fact_page"
-        tools:layout="@layout/fragment_fact_page" />
+        tools:layout="@layout/fragment_fact_page" >
+        <action
+            android:id="@+id/action_factPageFragment_to_factPageSimpleFragment"
+            app:destination="@id/factPageSimpleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/factPageSimpleFragment"
+        android:name="com.example.marinefinalproj.FactPageSimpleFragment"
+        android:label="fragment_fact_page_simple"
+        tools:layout="@layout/fragment_fact_page_simple" >
+        <action
+            android:id="@+id/action_factPageSimpleFragment_to_factPageFragment"
+            app:destination="@id/factPageFragment" />
+    </fragment>
 </navigation>

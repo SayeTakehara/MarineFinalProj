@@ -16,6 +16,9 @@ class MinigameOneFragment : Fragment() {
     ): View? {
         _binding = FragmentMinigameOneBinding.inflate(inflater, container, false)
         val rootView = binding.root
+        var timesPressed: Int
+        binding.imageButton.setOnClickListener {
+        }
         return rootView
     }
 }
