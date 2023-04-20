@@ -17,6 +17,7 @@ class MinigameTwoFragment : Fragment() {
     ): View? {
         _binding = FragmentMinigameTwoBinding.inflate(inflater, container, false)
         val rootView = binding.root
+        //Minigame two: fling something? Maybe sand
         return rootView
     }
 }

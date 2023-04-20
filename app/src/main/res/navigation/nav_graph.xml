@@ -19,6 +19,12 @@
         <action
             android:id="@+id/action_titleFragment_to_minigameThreeFragment"
             app:destination="@id/minigameThreeFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_factPageFragment"
+            app:destination="@id/factPageFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_factPageSimpleFragment"
+            app:destination="@id/factPageSimpleFragment" />
     </fragment>
     <fragment
         android:id="@+id/minigameOneFragment"

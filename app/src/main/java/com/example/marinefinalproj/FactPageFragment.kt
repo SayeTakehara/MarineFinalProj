@@ -16,6 +16,7 @@ class FactPageFragment : Fragment() {
     ): View? {
         _binding = FragmentFactPageBinding.inflate(inflater, container, false)
         val rootView = binding.root
+        setHasOptionsMenu(true)
         return rootView
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

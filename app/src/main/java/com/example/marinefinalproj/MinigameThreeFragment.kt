@@ -16,6 +16,7 @@ class MinigameThreeFragment : Fragment() {
     ): View? {
         _binding = FragmentMinigameThreeBinding.inflate(inflater, container, false)
         val rootView = binding.root
+        //Minigame 3: Scroll down gesture, go to deep sea
         return rootView
     }
 }
