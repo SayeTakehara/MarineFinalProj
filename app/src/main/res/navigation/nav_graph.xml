@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_minigameOneFragment_to_factPageFragment"
             app:destination="@id/factPageFragment" />
+        <action
+            android:id="@+id/action_minigameOneFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
     </fragment>
     <fragment
         android:id="@+id/minigameTwoFragment"
@@ -43,6 +46,9 @@
         <action
             android:id="@+id/action_minigameTwoFragment_to_factPageFragment"
             app:destination="@id/factPageFragment" />
+        <action
+            android:id="@+id/action_minigameTwoFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
     </fragment>
     <fragment
         android:id="@+id/minigameThreeFragment"
@@ -52,12 +58,15 @@
         <action
             android:id="@+id/action_minigameThreeFragment_to_factPageFragment"
             app:destination="@id/factPageFragment" />
+        <action
+            android:id="@+id/action_minigameThreeFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
     </fragment>
     <fragment
         android:id="@+id/factPageFragment"
-        android:name="com.example.marinefinalproj.FactPageFragment"
+        android:name="com.example.marinefinalproj.FactPageComplexFragment"
         android:label="fragment_fact_page"
-        tools:layout="@layout/fragment_fact_page" >
+        tools:layout="@layout/fragment_fact_page_complex" >
         <action
             android:id="@+id/action_factPageFragment_to_factPageSimpleFragment"
             app:destination="@id/factPageSimpleFragment" />

@@ -5,16 +5,16 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.example.marinefinalproj.databinding.FragmentFactPageBinding
+import com.example.marinefinalproj.databinding.FragmentFactPageComplexBinding
 
-class FactPageFragment : Fragment() {
-    private var _binding : FragmentFactPageBinding? = null
+class FactPageComplexFragment : Fragment() {
+    private var _binding : FragmentFactPageComplexBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentFactPageBinding.inflate(inflater, container, false)
+        _binding = FragmentFactPageComplexBinding.inflate(inflater, container, false)
         val rootView = binding.root
         setHasOptionsMenu(true)
         return rootView
