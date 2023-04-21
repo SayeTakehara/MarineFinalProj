@@ -3,12 +3,13 @@ package com.example.marinefinalproj
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.GestureDetectorCompat
+import androidx.core.view.MotionEventCompat
 import androidx.fragment.app.Fragment
-import com.example.marinefinalproj.databinding.FragmentMinigameOneBinding
 import com.example.marinefinalproj.databinding.FragmentMinigameTwoBinding
-import android.view.GestureDetector
-import android.view.MotionEvent
+
 
 class MinigameTwoFragment : Fragment() {
     private var _binding : FragmentMinigameTwoBinding? = null
@@ -24,7 +25,6 @@ class MinigameTwoFragment : Fragment() {
         mDetector = GestureDetectorCompat(this.requireContext(), MyGestureListener())
         return rootView
     }
-
 
     private class MyGestureListener : GestureDetector.SimpleOnGestureListener() {
 
