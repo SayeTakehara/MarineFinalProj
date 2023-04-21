@@ -23,27 +23,33 @@ class MinigameOneFragment : Fragment() {
         var timesPressed = 0
         binding.timesPressedText.text = timesPressed.toString()
         binding.reelImageButton.setOnClickListener {
-            if(timesPressed <= 4){
-                ObjectAnimator.ofFloat(binding.fishImage, "translationY", -1000f).apply {
-                    duration = 1000
-                    start()
+            timesPressed++
+            binding.reelImageButton.animate()
+                .rotationBy(360f)
+                .setDuration(700)
+                .withEndAction{
                 }
-            }
-            else{
-                timesPressed++
-                binding.timesPressedText.text = timesPressed.toString()
+                .start()
+            binding.timesPressedText.text = timesPressed.toString()
+            if(timesPressed > 19){
+                binding.fishImage.animate()
+                    .translationY(-1000f)
+                    .withEndAction {
+                        var action = MinigameOneFragmentDirections.actionMinigameOneFragmentToFactPageFragment()
+                        MaterialAlertDialogBuilder(requireContext())
+                            .setTitle(getString(R.string.sampleTextFact))
+                            .setMessage(getString(R.string.smallMessageSmalltext))
+                            .setPositiveButton("Yes") { dialog, which ->
+                                action = MinigameOneFragmentDirections.actionMinigameOneFragmentToTitleFragment()
+                            }
+                            .show()
+                        timesPressed = 0
+                        rootView.findNavController().navigate(action)
+                    }
+                    .setDuration(1000)
+                    .start()
             }
         }
-//        var action = MinigameOneFragmentDirections.actionMinigameOneFragmentToFactPageFragment()
-//        MaterialAlertDialogBuilder(requireContext())
-//            .setTitle(getString(R.string.sampleTextFact))
-//            .setMessage(getString(R.string.smallMessageSmalltext))
-//            .setPositiveButton("Yes") { dialog, which ->
-//                action = MinigameOneFragmentDirections.actionMinigameOneFragmentToTitleFragment()
-//            }
-//            .show()
-//        timesPressed = 0
-//        rootView.findNavController().navigate(action)
         return rootView
     }
 }
