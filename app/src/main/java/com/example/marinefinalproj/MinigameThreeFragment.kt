@@ -27,19 +27,26 @@ class MinigameThreeFragment : Fragment() {
             ): Boolean {
                 if(distanceY > 0) {
                     totalScrolled += distanceY.toInt()
-                    if(totalScrolled >= 2000){
-                        var action = MinigameThreeFragmentDirections.actionMinigameThreeFragmentToTitleFragment()
-                        MaterialAlertDialogBuilder(requireContext())
-                            .setTitle(getString(R.string.sampleTextFact))
-                            .setMessage(getString(R.string.smallMessageSmalltext))
-                            .setPositiveButton("Yes") { dialog, which ->
-                                action = MinigameThreeFragmentDirections.actionMinigameThreeFragmentToFactPageFragment()
+                    binding.background.animate()
+                        .translationYBy(distanceY)
+                        .withEndAction {
+                            if (totalScrolled >= 2000) {
+                                var action =
+                                    MinigameThreeFragmentDirections.actionMinigameThreeFragmentToTitleFragment()
+                                MaterialAlertDialogBuilder(requireContext())
+                                    .setTitle(getString(R.string.sampleTextFact))
+                                    .setMessage(getString(R.string.smallMessageSmalltext))
+                                    .setPositiveButton("Yes") { dialog, which ->
+                                        action =
+                                            MinigameThreeFragmentDirections.actionMinigameThreeFragmentToFactPageFragment()
+                                    }
+                                    .setNegativeButton("No") { dialog, which ->
+                                    }
+                                    .show()
+                                binding.root.findNavController().navigate(action)
                             }
-                            .setNegativeButton("No"){ dialog, which ->
-                            }
-                            .show()
-                        binding.root.findNavController().navigate(action)
-                    }
+                        }
+                        .start()
                 }
                 return super.onScroll(e1, e2, distanceX, distanceY)
             }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import com.example.marinefinalproj.databinding.FragmentMinigameTwoBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -37,25 +38,29 @@ class MinigameTwoFragment : Fragment() {
                         }
                     )
                     .alpha(0f)
-                    .setDuration(200)
                     .withEndAction{
+                        if(timesFlinged >= 7){
+                            if(timesFlinged >= 7){
+                                lateinit var action: NavDirections
+                                MaterialAlertDialogBuilder(requireContext())
+                                    .setTitle(getString(R.string.sampleTextFact))
+                                    .setMessage(getString(R.string.smallMessageSmalltext))
+                                    .setPositiveButton("Yes") { dialog, which ->
+                                        action = MinigameTwoFragmentDirections.actionMinigameTwoFragmentToFactPageFragment()
+                                        binding.root.findNavController().navigate(action)
+                                    }
+                                    .setNegativeButton("No"){ dialog, which ->
+                                        action = MinigameTwoFragmentDirections.actionMinigameTwoFragmentToTitleFragment()
+                                        binding.root.findNavController().navigate(action)
+                                    }
+                                    .show()
+                            }
+                        }
                         binding.sandAnimation.translationX = 0f
                         binding.sandAnimation.alpha = 1f
                         binding.sandAnimation.visibility = View.INVISIBLE
-                        if(timesFlinged >= 7){
-                            var action = MinigameTwoFragmentDirections.actionMinigameTwoFragmentToTitleFragment()
-                            MaterialAlertDialogBuilder(requireContext())
-                                .setTitle(getString(R.string.sampleTextFact))
-                                .setMessage(getString(R.string.smallMessageSmalltext))
-                                .setPositiveButton("Yes") { dialog, which ->
-                                    action = MinigameTwoFragmentDirections.actionMinigameTwoFragmentToFactPageFragment()
-                                }
-                                .setNegativeButton("No"){ dialog, which ->
-                                }
-                                .show()
-                            binding.root.findNavController().navigate(action)
-                        }
                     }
+                    .setDuration(200)
                     .start()
                 return super.onFling(e1, e2, velocityX, velocityY)
             }
