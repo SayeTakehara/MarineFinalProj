@@ -28,6 +28,10 @@ class TitleFragment : Fragment() {
             }
             rootView.findNavController().navigate(action)
         }
+        binding.factsButton.setOnClickListener{
+            val action = TitleFragmentDirections.actionTitleFragmentToFactPageFragment()
+            rootView.findNavController().navigate(action)
+        }
         setHasOptionsMenu(true)
         return rootView
     }

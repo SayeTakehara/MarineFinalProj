@@ -42,6 +42,8 @@ class MinigameOneFragment : Fragment() {
                             .setPositiveButton("Yes") { dialog, which ->
                                 action = MinigameOneFragmentDirections.actionMinigameOneFragmentToTitleFragment()
                             }
+                            .setNegativeButton("No"){ dialog, which ->
+                            }
                             .show()
                         timesPressed = 0
                         rootView.findNavController().navigate(action)
