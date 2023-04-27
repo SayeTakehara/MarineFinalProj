@@ -16,6 +16,14 @@ class FactPageSimpleFragment : Fragment() {
     ): View? {
         _binding = FragmentFactPageSimpleBinding.inflate(inflater, container, false)
         val rootView = binding.root
+
+        val sampleFacts = listOf<Fact>(
+            Fact("Randy Jellicent is actually a survivor of the titanic", false),
+            Fact("Randy Jellicent's book is out NOW", false),
+            Fact("Randy Jellicent holds the world Record for the most amount of jellies stung", false)
+        )
+        val myAdapter = FactAdapter(sampleFacts)
+        binding.recyclerView.adapter = myAdapter
         setHasOptionsMenu(true)
         return rootView
     }

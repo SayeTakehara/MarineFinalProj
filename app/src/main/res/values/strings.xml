@@ -4,4 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sampleTextFact">Fact here</string>
     <string name="smallMessageSmalltext">Play again?</string>
+    <string name="titleText">Marine Minigame Madness!</string>
+    <string name="playButtonText">play now</string>
+    <string name="factsButtonText">Go to facts</string>
 </resources>

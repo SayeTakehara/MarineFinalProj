@@ -8,7 +8,7 @@ class FactViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(bin
 
     fun bindFact(fact: Fact){
         currentFact = fact
-        if(currentFact.seenBefore) {
+        if(!currentFact.seenBefore) {
             binding.factText.text = currentFact.factText
         }
     }
