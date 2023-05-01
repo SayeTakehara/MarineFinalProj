@@ -21,19 +21,24 @@ class MinigameOneFragment : Fragment() {
         val rootView = binding.root
         // Minigame 1: Press a button multiple times, maybe fishing something up? YEPPERS
         var timesPressed = 0
+        val random = ((Math.random() * 20) + 10).toInt()
         binding.timesPressedText.text = timesPressed.toString()
         binding.reelImageButton.setOnClickListener {
-            timesPressed++
-            binding.reelImageButton.animate()
-                .rotationBy(360f)
-                .setDuration(700)
-                .withEndAction{
-                }
-                .start()
+            val gameFinished = timesPressed > random
+            if(!gameFinished){
+                timesPressed++
+                binding.reelImageButton.animate()
+                    .rotationBy(360f)
+                    .setDuration(700)
+                    .withEndAction{
+                    }
+                    .start()
+            }
             binding.timesPressedText.text = timesPressed.toString()
-            if(timesPressed > 19){
+            if(gameFinished){
+                binding.fishImage.visibility = View.VISIBLE
                 binding.fishImage.animate()
-                    .translationY(-1000f)
+                    .translationY(-700f)
                     .withEndAction {
                         var action = MinigameOneFragmentDirections.actionMinigameOneFragmentToFactPageFragment()
                         MaterialAlertDialogBuilder(requireContext())

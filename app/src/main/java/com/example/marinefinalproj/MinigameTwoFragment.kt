@@ -31,9 +31,11 @@ class MinigameTwoFragment : Fragment() {
                 binding.sandAnimation.animate()
                     .translationXBy(
                         if (velocityX > 0){
+                            binding.sandAnimation.rotationY = 0f
                             300f
                         }
                         else{
+                            binding.sandAnimation.rotationY = -900f
                             -300f
                         }
                     )

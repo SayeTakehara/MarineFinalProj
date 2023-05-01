@@ -4,15 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TitleFragment">
+    tools:context=".TitleFragment"
+    android:background="@color/teal_200">
+
 
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/titleText"
-        android:textSize="40dp"
+        android:background="@drawable/ic_baseline_waves_24"
+        android:fontFamily="@font/press_start_2p"
         android:gravity="center"
+        android:text="@string/titleText"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/playButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,6 +28,7 @@
         android:id="@+id/playButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#034880"
         android:text="@string/playButtonText"
         app:layout_constraintBottom_toTopOf="@+id/factsButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,9 +39,22 @@
         android:id="@+id/factsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FB1C1C"
         android:text="@string/factsButtonText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playButton" />
+
+    <ImageView
+        android:id="@+id/bubbleImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/bubblesmore"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

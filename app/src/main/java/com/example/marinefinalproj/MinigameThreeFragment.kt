@@ -31,7 +31,7 @@ class MinigameThreeFragment : Fragment() {
                     binding.background.animate()
                         .translationYBy(-distanceY * 10)
                         .withEndAction {
-                            if (totalScrolled >= 2000) {
+                            if (totalScrolled >= 2025) {
                                 var action: NavDirections
                                 MaterialAlertDialogBuilder(requireContext())
                                     .setTitle(getString(R.string.sampleTextFact))
