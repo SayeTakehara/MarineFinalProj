@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "972206770403",
+    "project_id": "marinefinalproj",
+    "storage_bucket": "marinefinalproj.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:972206770403:android:ed50ddbe7e29045c125dd6",
+        "android_client_info": {
+          "package_name": "com.example.marinefinalproj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "972206770403-qv72iccrkjcapjst9mkr9tb4jhdj6390.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9EjevIpqzWjO08xxvvTRconIlCrlfZUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "972206770403-qv72iccrkjcapjst9mkr9tb4jhdj6390.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

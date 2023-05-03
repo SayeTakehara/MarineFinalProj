@@ -1,4 +1,4 @@
 package com.example.marinefinalproj
 
-data class Fact(val factText: String, val seenBefore: Boolean = false) {
+data class Fact(val factTextID: Int, val seenBefore: Boolean = false) {
 }

@@ -27,10 +27,14 @@ class MinigameOneFragment : Fragment() {
             val gameFinished = timesPressed > random
             if(!gameFinished){
                 timesPressed++
+                binding.timesPressedText.visibility = View.VISIBLE
+                binding.textbackground.visibility = View.VISIBLE
                 binding.reelImageButton.animate()
                     .rotationBy(360f)
                     .setDuration(700)
                     .withEndAction{
+                        binding.timesPressedText.visibility = View.INVISIBLE
+                        binding.textbackground.visibility = View.INVISIBLE
                     }
                     .start()
             }
