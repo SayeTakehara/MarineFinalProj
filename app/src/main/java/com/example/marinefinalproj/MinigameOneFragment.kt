@@ -6,19 +6,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import com.example.marinefinalproj.databinding.FragmentMinigameOneBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class MinigameOneFragment : Fragment() {
     private var _binding : FragmentMinigameOneBinding? = null
     private val binding get() = _binding!!
+    lateinit var dbRef : DatabaseReference
+    private val viewModel: FactViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMinigameOneBinding.inflate(inflater, container, false)
         val rootView = binding.root
+        dbRef = Firebase.database.reference
         // Minigame 1: Press a button multiple times, maybe fishing something up? YEPPERS
         var timesPressed = 0
         val random = ((Math.random() * 20) + 10).toInt()
@@ -44,18 +52,18 @@ class MinigameOneFragment : Fragment() {
                 binding.fishImage.animate()
                     .translationY(-700f)
                     .withEndAction {
-                        var action = MinigameOneFragmentDirections.actionMinigameOneFragmentToFactPageFragment()
-                        MaterialAlertDialogBuilder(requireContext())
-                            .setTitle(getString(R.string.sampleTextFact))
-                            .setMessage(getString(R.string.smallMessageSmalltext))
-                            .setPositiveButton("Yes") { dialog, which ->
-                                action = MinigameOneFragmentDirections.actionMinigameOneFragmentToTitleFragment()
-                            }
-                            .setNegativeButton("No"){ dialog, which ->
-                            }
-                            .show()
+                        var action: NavDirections
+                        val factText = getString(viewModel.addRandomFact(dbRef))
+                        val yesOrNo = viewModel.alertDialog(requireContext(), dbRef, factText)
+                        if(yesOrNo){
+                            action = MinigameOneFragmentDirections.actionMinigameOneFragmentToTitleFragment()
+                            rootView.findNavController().navigate(action)
+                        }
+                        else{
+                            action = MinigameOneFragmentDirections.actionMinigameOneFragmentToFactPageFragment()
+                            rootView.findNavController().navigate(action)
+                        }
                         timesPressed = 0
-                        rootView.findNavController().navigate(action)
                     }
                     .setDuration(1000)
                     .start()
