@@ -53,8 +53,7 @@ class MinigameOneFragment : Fragment() {
                     .translationY(-700f)
                     .withEndAction {
                         var action: NavDirections
-                        val factText = getString(viewModel.addRandomFact(dbRef))
-                        val yesOrNo = viewModel.alertDialog(requireContext(), dbRef, factText)
+                        val yesOrNo = viewModel.alertDialog(requireContext(), dbRef)
                         if(yesOrNo){
                             action = MinigameOneFragmentDirections.actionMinigameOneFragmentToTitleFragment()
                             rootView.findNavController().navigate(action)

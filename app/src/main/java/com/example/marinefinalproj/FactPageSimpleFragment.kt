@@ -27,7 +27,6 @@ class FactPageSimpleFragment : Fragment() {
         _binding = FragmentFactPageSimpleBinding.inflate(inflater, container, false)
         val rootView = binding.root
         dbRef = Firebase.database.reference
-        viewModel.assignFacts(dbRef)
         val sampleFacts = viewModel.allPreviousFacts
 
         val myAdapter = FactAdapter(sampleFacts)
