@@ -2,6 +2,7 @@ package com.example.marinefinalproj
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -52,6 +53,7 @@ class MinigameOneFragment : Fragment() {
                 binding.fishImage.animate()
                     .translationY(-700f)
                     .withEndAction {
+                        Log.i("MainActivity", "please work please")
                         var action: NavDirections
                         val yesOrNo = viewModel.alertDialog(requireContext(), dbRef)
                         if(yesOrNo){

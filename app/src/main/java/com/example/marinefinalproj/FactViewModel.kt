@@ -15,16 +15,16 @@ import com.google.firebase.database.ktx.snapshots
 
 class FactViewModel: ViewModel() {
     private var allFactsStrings: List<String> = listOf(
-        Resources.getSystem().getString(R.string.factOne),
-        Resources.getSystem().getString(R.string.factTwo),
-        Resources.getSystem().getString(R.string.factThree),
-        Resources.getSystem().getString(R.string.factFour),
-        Resources.getSystem().getString(R.string.factFive),
-        Resources.getSystem().getString(R.string.factSix),
-        Resources.getSystem().getString(R.string.factSeven),
-        Resources.getSystem().getString(R.string.factEight),
-        Resources.getSystem().getString(R.string.factNine),
-        Resources.getSystem().getString(R.string.factTen),
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j"
     )
     private var _allPreviousFacts: MutableList<Fact> = mutableListOf()
     val allPreviousFacts: List<Fact>
@@ -32,9 +32,6 @@ class FactViewModel: ViewModel() {
     private var _lastThreeFacts: MutableList<Fact> = mutableListOf()
     val lastThreeFacts: List<Fact>
         get() = _lastThreeFacts
-
-    fun assignFacts(db: DatabaseReference){
-    }
 
     fun alertDialog(context: Context, db: DatabaseReference): Boolean{
         val randomInt = (Math.random() * 10).toInt()
@@ -56,9 +53,10 @@ class FactViewModel: ViewModel() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val allDBEntries = snapshot.children
                 for (allFactEntries in allDBEntries) {
+                    _allPreviousFacts = mutableListOf()
                     for (singleFactEntry in allFactEntries.children) {
                         val factID =
-                            singleFactEntry.child("factTextID").getValue().toString()
+                            singleFactEntry.child("factText").getValue().toString()
                         val seenOrNot =
                             singleFactEntry.child("seenBefore").getValue().toString().toBoolean()
                         Log.i("MainActivity", "db worked")
@@ -67,7 +65,7 @@ class FactViewModel: ViewModel() {
                             _lastThreeFacts.add(Fact(factID, seenOrNot))
                         }
                     }
-                    Log.i("MainActivity", "db cooked")
+                    Log.i("MainActivity", "db ${_allPreviousFacts}")
                 }
             }
 
