@@ -33,27 +33,26 @@ class FactViewModel: ViewModel() {
     val lastThreeFacts: List<Fact>
         get() = _lastThreeFacts
 
-    fun alertDialog(context: Context, db: DatabaseReference): Boolean{
+    fun assignLastThree(){
+        _lastThreeFacts = mutableListOf()
+        if(_allPreviousFacts.size >= 3){
+            var length = _allPreviousFacts.size - 1
+            while(_lastThreeFacts.size <= 3){
+                _lastThreeFacts.add(_allPreviousFacts[length])
+                length--
+            }
+        }
+    }
+
+    fun alertDialog(db: DatabaseReference): String{
         val randomInt = (Math.random() * 10).toInt()
         val factChosen = allFactsStrings[randomInt]
         db.child("Fact").push().setValue(Fact(factChosen, false))
 
-        var goBackorForward: Boolean = false
-        MaterialAlertDialogBuilder(context)
-            .setTitle(factChosen)
-            .setMessage("play again?")
-            .setPositiveButton("Yes") { dialog, which ->
-                goBackorForward = true
-            }
-            .setNegativeButton("No"){ dialog, which ->
-                goBackorForward = false
-            }
-            .show()
         db.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val allDBEntries = snapshot.children
                 for (allFactEntries in allDBEntries) {
-                    _allPreviousFacts = mutableListOf()
                     for (singleFactEntry in allFactEntries.children) {
                         val factID =
                             singleFactEntry.child("factText").getValue().toString()
@@ -61,17 +60,13 @@ class FactViewModel: ViewModel() {
                             singleFactEntry.child("seenBefore").getValue().toString().toBoolean()
                         Log.i("MainActivity", "db worked")
                         _allPreviousFacts.add(Fact(factID, seenOrNot))
-                        if(_lastThreeFacts.size < 3){
-                            _lastThreeFacts.add(Fact(factID, seenOrNot))
-                        }
                     }
-                    Log.i("MainActivity", "db ${_allPreviousFacts}")
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
             }
         })
-        return goBackorForward
+        return factChosen
     }
 }

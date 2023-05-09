@@ -18,7 +18,6 @@ import com.google.firebase.ktx.Firebase
 class FactPageSimpleFragment : Fragment() {
     private var _binding : FragmentFactPageSimpleBinding? = null
     private val binding get() = _binding!!
-    lateinit var dbRef : DatabaseReference
     private val viewModel: FactViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +25,6 @@ class FactPageSimpleFragment : Fragment() {
     ): View? {
         _binding = FragmentFactPageSimpleBinding.inflate(inflater, container, false)
         val rootView = binding.root
-        dbRef = Firebase.database.reference
         val sampleFacts = viewModel.allPreviousFacts
 
         val myAdapter = FactAdapter(sampleFacts)

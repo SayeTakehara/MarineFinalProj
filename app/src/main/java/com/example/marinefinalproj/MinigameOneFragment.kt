@@ -54,16 +54,17 @@ class MinigameOneFragment : Fragment() {
                     .translationY(-700f)
                     .withEndAction {
                         Log.i("MainActivity", "please work please")
-                        var action: NavDirections
-                        val yesOrNo = viewModel.alertDialog(requireContext(), dbRef)
-                        if(yesOrNo){
-                            action = MinigameOneFragmentDirections.actionMinigameOneFragmentToTitleFragment()
-                            rootView.findNavController().navigate(action)
-                        }
-                        else{
-                            action = MinigameOneFragmentDirections.actionMinigameOneFragmentToFactPageFragment()
-                            rootView.findNavController().navigate(action)
-                        }
+                        val factChosen = viewModel.alertDialog(dbRef)
+                        MaterialAlertDialogBuilder(requireContext())
+                            .setTitle(factChosen)
+                            .setMessage("play again?")
+                            .setPositiveButton("Yes") { dialog, which ->
+                                rootView.findNavController().navigate(MinigameOneFragmentDirections.actionMinigameOneFragmentToTitleFragment())
+                            }
+                            .setNegativeButton("No"){ dialog, which ->
+                                rootView.findNavController().navigate(MinigameOneFragmentDirections.actionMinigameOneFragmentToFactPageFragment())
+                            }
+                            .show()
                         timesPressed = 0
                     }
                     .setDuration(1000)

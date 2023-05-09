@@ -16,36 +16,81 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/fishImageOne"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:src="@drawable/fishfactone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        />
+
     <TextView
         android:id="@+id/textFishOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
         android:text="TextView"
-        android:background="@color/purple_200"
+        android:textSize="32dp"
+        app:fontFamily="casual"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2" />
 
+    <ImageView
+        android:id="@+id/fishImageTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:src="@drawable/fishfacttwo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        />
+
     <TextView
         android:id="@+id/textFishTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
         android:text="TextView"
-        android:background="@color/purple_200"
+        android:textSize="32dp"
+        app:fontFamily="casual"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/fishImageThree"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:src="@drawable/fishfactthree"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        />
+
     <TextView
         android:id="@+id/textFishThree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:fontFamily="casual"
+        android:gravity="center"
         android:text="TextView"
-        android:background="@color/purple_200"
+        android:textSize="32dp"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
