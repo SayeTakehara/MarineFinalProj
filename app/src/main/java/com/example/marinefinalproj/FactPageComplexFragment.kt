@@ -1,9 +1,11 @@
 package com.example.marinefinalproj
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.view.animation.CycleInterpolator
+import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -11,6 +13,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.marinefinalproj.databinding.FragmentFactPageComplexBinding
+
 
 class FactPageComplexFragment : Fragment() {
     private var _binding : FragmentFactPageComplexBinding? = null
@@ -67,19 +70,35 @@ class FactPageComplexFragment : Fragment() {
             .start()
     }
     fun animateFish(view: ImageView){
-        view.animate()
-            .translationXBy(
-                if(view.x.toFloat() > 0){
+        val animationView: ViewPropertyAnimator = view.animate()
+            .translationX(
+                if(view.x.toFloat() < 0){
                     300f
                 }
                 else{
                     -300f
                 }
             )
-            .rotationYBy(90f)
-            .setInterpolator(CycleInterpolator((60000 / 1000).toFloat()))
-            .setDuration(600000)
-            .start()
+            .setInterpolator(LinearInterpolator())
+            .setDuration(900)
+        animationView.setListener(object: AnimatorListenerAdapter(){
+            override fun onAnimationEnd(animation: Animator) {
+                view.animate()
+                    .translationX(
+                        if(view.x.toFloat() < 0){
+                            300f
+                        }
+                        else{
+                            -300f
+                        }
+                    )
+                    .setInterpolator(LinearInterpolator())
+                    .setListener(this)
+                    .setDuration(900)
+                    .start()
+                view.rotationY += 180f
+            }
+        })
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
