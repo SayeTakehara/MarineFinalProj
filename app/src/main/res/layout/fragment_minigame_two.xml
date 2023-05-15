@@ -9,10 +9,14 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/minigametwotitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Minigame two"
+        android:layout_marginTop="32dp"
+        android:text="Brush Off the Sand!"
+        android:gravity="center"
+        android:textSize="30sp"
+        app:fontFamily="@font/press_start_2p"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,12 +25,24 @@
         android:id="@+id/sandBox1"
         android:layout_width="0dp"
         android:layout_height="200dp"
-        android:text="TextView"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.9" />
+
+    <ImageView
+        android:id="@+id/textFlickedBackground"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/textpuncheffect"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/sandAnimation"
@@ -38,8 +54,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8"
-        android:background="@color/white"/>
+        app:layout_constraintVertical_bias="0.8" />
+
+    <TextView
+        android:id="@+id/timesFlickedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/press_start_2p"
+        android:gravity="center"
+        android:text="texthere"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/textFlickedBackground"
+        app:layout_constraintEnd_toEndOf="@+id/textFlickedBackground"
+        app:layout_constraintStart_toStartOf="@+id/textFlickedBackground"
+        app:layout_constraintTop_toTopOf="@+id/textFlickedBackground" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

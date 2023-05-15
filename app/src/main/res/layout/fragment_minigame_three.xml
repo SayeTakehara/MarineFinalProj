@@ -18,10 +18,14 @@
         android:src="@drawable/minigamethreebackground" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/minigameThreeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Minigame three"
+        android:layout_marginTop="32dp"
+        android:text="Scroll Down!"
+        android:gravity="center"
+        android:textSize="30sp"
+        app:fontFamily="@font/press_start_2p"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

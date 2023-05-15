@@ -22,9 +22,6 @@
         <action
             android:id="@+id/action_titleFragment_to_factPageFragment"
             app:destination="@id/factPageFragment" />
-        <action
-            android:id="@+id/action_titleFragment_to_factPageSimpleFragment"
-            app:destination="@id/factPageSimpleFragment" />
     </fragment>
     <fragment
         android:id="@+id/minigameOneFragment"
@@ -70,6 +67,9 @@
         <action
             android:id="@+id/action_factPageFragment_to_factPageSimpleFragment"
             app:destination="@id/factPageSimpleFragment" />
+        <action
+            android:id="@+id/action_factPageFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
     </fragment>
     <fragment
         android:id="@+id/factPageSimpleFragment"

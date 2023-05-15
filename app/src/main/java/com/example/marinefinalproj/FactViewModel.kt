@@ -26,28 +26,25 @@ class FactViewModel: ViewModel() {
         "i",
         "j"
     )
-    private var _allPreviousFacts: MutableList<Fact> = mutableListOf()
-    val allPreviousFacts: List<Fact>
+    private var _allPreviousFacts: MutableList<String> = mutableListOf()
+    val allPreviousFacts: List<String>
         get() = _allPreviousFacts
-    private var _lastThreeFacts: MutableList<Fact> = mutableListOf()
-    val lastThreeFacts: List<Fact>
+    private var _lastThreeFacts: MutableList<String> = mutableListOf()
+    val lastThreeFacts: List<String>
         get() = _lastThreeFacts
 
     fun assignLastThree(){
         _lastThreeFacts = mutableListOf()
-        if(_allPreviousFacts.size >= 3){
-            var length = _allPreviousFacts.size - 1
-            while(_lastThreeFacts.size <= 3){
-                _lastThreeFacts.add(_allPreviousFacts[length])
-                length--
-            }
+        val length = _allPreviousFacts.size.toInt() - 1
+        for(i in length downTo 0){
+            _lastThreeFacts.add(_allPreviousFacts[i])
         }
     }
 
-    fun alertDialog(db: DatabaseReference): String{
+    fun addAndAssignFacts(db: DatabaseReference): String{
         val randomInt = (Math.random() * 10).toInt()
         val factChosen = allFactsStrings[randomInt]
-        db.child("Fact").push().setValue(Fact(factChosen, false))
+        db.child("Fact").push().setValue(Fact(factChosen))
 
         db.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -56,10 +53,10 @@ class FactViewModel: ViewModel() {
                     for (singleFactEntry in allFactEntries.children) {
                         val factID =
                             singleFactEntry.child("factText").getValue().toString()
-                        val seenOrNot =
-                            singleFactEntry.child("seenBefore").getValue().toString().toBoolean()
                         Log.i("MainActivity", "db worked")
-                        _allPreviousFacts.add(Fact(factID, seenOrNot))
+                        if(!_allPreviousFacts.contains(factID)) {
+                            _allPreviousFacts.add(factID)
+                        }
                     }
                 }
             }

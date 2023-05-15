@@ -3,6 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/audiowide</item>
         <item>@font/codystar</item>
+        <item>@font/geo</item>
         <item>@font/press_start_2p</item>
     </array>
 </resources>

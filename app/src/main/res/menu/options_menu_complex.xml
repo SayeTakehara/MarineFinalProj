@@ -4,5 +4,4 @@
     <item
         android:id="@+id/factPageSimpleFragment"
         android:title="Simple Facts Page" />
-
 </menu>

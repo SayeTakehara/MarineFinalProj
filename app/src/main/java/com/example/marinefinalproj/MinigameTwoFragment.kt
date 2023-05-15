@@ -4,16 +4,23 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import com.example.marinefinalproj.databinding.FragmentMinigameTwoBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 
 class MinigameTwoFragment : Fragment() {
     private var _binding : FragmentMinigameTwoBinding? = null
     private val binding get() = _binding!!
     private var timesFlinged = 0
+    private val randomTimes = ((Math.random() * 10) + 7).toInt()
+    var dbRef : DatabaseReference = Firebase.database.reference
+    private val viewModel: FactViewModel by activityViewModels()
     private val gesture = GestureDetector(
         activity,
         object : GestureDetector.SimpleOnGestureListener() {
@@ -26,7 +33,9 @@ class MinigameTwoFragment : Fragment() {
                 velocityY: Float
             ): Boolean {
                 timesFlinged++
-                binding.sandBox1.text = timesFlinged.toString()
+                binding.timesFlickedText.text = timesFlinged.toString()
+                binding.textFlickedBackground.visibility = View.VISIBLE
+                binding.timesFlickedText.visibility = View.VISIBLE
                 binding.sandAnimation.visibility = View.VISIBLE
                 binding.sandAnimation.animate()
                     .translationXBy(
@@ -40,23 +49,24 @@ class MinigameTwoFragment : Fragment() {
                         }
                     )
                     .alpha(0f)
-                    .withEndAction{
-                        if(timesFlinged >= 7){
-                            if(timesFlinged >= 7){
-                                lateinit var action: NavDirections
-                                MaterialAlertDialogBuilder(requireContext())
-                                    .setTitle(getString(R.string.sampleTextFact))
-                                    .setMessage(getString(R.string.smallMessageSmalltext))
-                                    .setPositiveButton("Yes") { dialog, which ->
-                                        action = MinigameTwoFragmentDirections.actionMinigameTwoFragmentToFactPageFragment()
-                                        binding.root.findNavController().navigate(action)
-                                    }
-                                    .setNegativeButton("No"){ dialog, which ->
-                                        action = MinigameTwoFragmentDirections.actionMinigameTwoFragmentToTitleFragment()
-                                        binding.root.findNavController().navigate(action)
-                                    }
-                                    .show()
-                            }
+                    .withEndAction {
+                        binding.textFlickedBackground.visibility = View.INVISIBLE
+                        binding.timesFlickedText.visibility = View.INVISIBLE
+                        if (timesFlinged >= randomTimes) {
+                            val factChosen = viewModel.addAndAssignFacts(dbRef)
+                            MaterialAlertDialogBuilder(requireContext())
+                                .setTitle(factChosen)
+                                .setMessage("play again?")
+                                .setPositiveButton("Yes") { dialog, which ->
+                                    binding.root.findNavController()
+                                        .navigate(MinigameTwoFragmentDirections.actionMinigameTwoFragmentToTitleFragment())
+                                }
+                                .setNegativeButton("No") { dialog, which ->
+                                    binding.root.findNavController()
+                                        .navigate(MinigameTwoFragmentDirections.actionMinigameTwoFragmentToFactPageFragment())
+                                }
+                                .setCancelable(false)
+                                .show()
                         }
                         binding.sandAnimation.translationX = 0f
                         binding.sandAnimation.alpha = 1f
@@ -76,8 +86,12 @@ class MinigameTwoFragment : Fragment() {
         val rootView = binding.root
         //Minigame two: fling something? Maybe sand
         binding.sandBox1.setOnTouchListener(object : View.OnTouchListener {
+
             override fun onTouch(v: View?, event: MotionEvent): Boolean {
-                return gesture.onTouchEvent(event)
+                if(timesFlinged < randomTimes) {
+                    return gesture.onTouchEvent(event)
+                }
+                return false
             }
         })
         return rootView

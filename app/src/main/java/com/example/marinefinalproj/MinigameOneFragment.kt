@@ -54,7 +54,7 @@ class MinigameOneFragment : Fragment() {
                     .translationY(-700f)
                     .withEndAction {
                         Log.i("MainActivity", "please work please")
-                        val factChosen = viewModel.alertDialog(dbRef)
+                        val factChosen = viewModel.addAndAssignFacts(dbRef)
                         MaterialAlertDialogBuilder(requireContext())
                             .setTitle(factChosen)
                             .setMessage("play again?")

@@ -34,40 +34,62 @@ class FactPageComplexFragment : Fragment() {
         viewModel.assignLastThree()
         val lastThree = viewModel.lastThreeFacts
         binding.textFishOne.text = if(lastThree.size > 0){
-            lastThree[0].factText.toString()
+            lastThree[0].toString()
         }
         else{
             ""
         }
         binding.textFishTwo.text = if(lastThree.size > 1){
-            lastThree[1].factText.toString()
+            lastThree[1].toString()
         }
         else{
             ""
         }
         binding.textFishThree.text = if(lastThree.size > 2){
-            lastThree[2].factText.toString()
+            lastThree[2].toString()
         }
         else{
             ""
+        }
+        binding.backtotitlebutton.setOnClickListener {
+            rootView.findNavController().navigate(FactPageComplexFragmentDirections.actionFactPageFragmentToTitleFragment())
         }
         setHasOptionsMenu(true)
         return rootView
     }
 
     fun animateText(view: TextView){
-        view.animate()
-            .translationXBy(
-                if(view.x.toFloat() > 0){
+        val animationView: ViewPropertyAnimator = view.animate()
+            .translationX(
+                if(view.translationX.toFloat() < 0){
                     300f
                 }
                 else{
                     -300f
                 }
             )
-            .setInterpolator(CycleInterpolator((60000 / 1000).toFloat()))
-            .setDuration(600000)
-            .start()
+            .setInterpolator(LinearInterpolator())
+            .setDuration(900)
+        animationView.setListener(object: AnimatorListenerAdapter(){
+            override fun onAnimationEnd(animation: Animator) {
+                view.animate()
+                    .translationX(
+                        if(view.translationX.toFloat() < 0){
+                            300f
+                        }
+                        else if(view.translationX.toFloat() > 0) {
+                            -300f
+                        }
+                        else{
+                            0f
+                        }
+                    )
+                    .setInterpolator(LinearInterpolator())
+                    .setListener(this)
+                    .setDuration(900)
+                    .start()
+            }
+        })
     }
     fun animateFish(view: ImageView){
         val animationView: ViewPropertyAnimator = view.animate()

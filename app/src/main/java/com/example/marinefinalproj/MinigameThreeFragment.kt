@@ -4,15 +4,22 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import com.example.marinefinalproj.databinding.FragmentMinigameThreeBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class MinigameThreeFragment : Fragment() {
     private var _binding : FragmentMinigameThreeBinding? = null
     private val binding get() = _binding!!
     private var totalScrolled = 0
+    var dbRef : DatabaseReference = Firebase.database.reference
+    private val viewModel: FactViewModel by activityViewModels()
+    private val randomTimes = ((Math.random() * 50) + 2000).toInt()
     private val gesture = GestureDetector(
         activity,
         object : GestureDetector.SimpleOnGestureListener() {
@@ -26,28 +33,29 @@ class MinigameThreeFragment : Fragment() {
                 distanceX: Float,
                 distanceY: Float
             ): Boolean {
+                totalScrolled += distanceY.toInt()
                 if(distanceY > 0) {
-                    totalScrolled += distanceY.toInt()
-                    binding.background.animate()
-                        .translationYBy(-distanceY * 10)
-                        .withEndAction {
-                            if (totalScrolled >= 2025) {
-                                var action: NavDirections
-                                MaterialAlertDialogBuilder(requireContext())
-                                    .setTitle(getString(R.string.sampleTextFact))
-                                    .setMessage(getString(R.string.smallMessageSmalltext))
-                                    .setPositiveButton("Yes") { dialog, which ->
-                                        action = MinigameThreeFragmentDirections.actionMinigameThreeFragmentToFactPageFragment()
-                                        binding.root.findNavController().navigate(action)
-                                    }
-                                    .setNegativeButton("No") { dialog, which ->
-                                        action = MinigameThreeFragmentDirections.actionMinigameThreeFragmentToTitleFragment()
-                                        binding.root.findNavController().navigate(action)
-                                    }
-                                    .show()
+                    if(totalScrolled < randomTimes) {
+                        binding.background.animate()
+                            .translationYBy(-distanceY * 5)
+                            .start()
+                    }
+                    else{
+                        val factChosen = viewModel.addAndAssignFacts(dbRef)
+                        MaterialAlertDialogBuilder(requireContext())
+                            .setTitle(factChosen)
+                            .setMessage("play again?")
+                            .setPositiveButton("Yes") { dialog, which ->
+                                binding.root.findNavController()
+                                    .navigate(MinigameThreeFragmentDirections.actionMinigameThreeFragmentToTitleFragment())
                             }
-                        }
-                        .start()
+                            .setNegativeButton("No") { dialog, which ->
+                                binding.root.findNavController()
+                                    .navigate(MinigameThreeFragmentDirections.actionMinigameThreeFragmentToFactPageFragment())
+                            }
+                            .setCancelable(false)
+                            .show()
+                    }
                 }
                 return super.onScroll(e1, e2, distanceX, distanceY)
             }
@@ -62,7 +70,10 @@ class MinigameThreeFragment : Fragment() {
         totalScrolled = 0
         binding.root.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(v: View?, event: MotionEvent): Boolean {
-                return gesture.onTouchEvent(event)
+                if (totalScrolled < randomTimes) {
+                    return gesture.onTouchEvent(event)
+                }
+                return false
             }
         })
         return rootView

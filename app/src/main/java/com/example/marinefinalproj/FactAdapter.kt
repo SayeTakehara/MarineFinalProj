@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marinefinalproj.databinding.ListItemBinding
 
-class FactAdapter (val factList: List<Fact>) : RecyclerView.Adapter<FactViewHolder>(){
+class FactAdapter (val factList: List<String>) : RecyclerView.Adapter<FactViewHolder>(){
     override fun getItemCount(): Int {
         return factList.size
     }
