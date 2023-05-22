@@ -33,11 +33,11 @@ class MinigameThreeFragment : Fragment() {
                 distanceX: Float,
                 distanceY: Float
             ): Boolean {
-                totalScrolled += distanceY.toInt()
                 if(distanceY > 0) {
+                    totalScrolled += distanceY.toInt()
                     if(totalScrolled < randomTimes) {
                         binding.background.animate()
-                            .translationYBy(-distanceY * 5)
+                            .translationYBy(-distanceY * 2)
                             .start()
                     }
                     else{

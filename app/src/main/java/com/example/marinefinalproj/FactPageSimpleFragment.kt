@@ -25,7 +25,7 @@ class FactPageSimpleFragment : Fragment() {
     ): View? {
         _binding = FragmentFactPageSimpleBinding.inflate(inflater, container, false)
         val rootView = binding.root
-        val sampleFacts = viewModel.allPreviousFacts
+        val sampleFacts = viewModel.shownFacts
 
         val myAdapter = FactAdapter(sampleFacts)
         binding.recyclerView.adapter = myAdapter

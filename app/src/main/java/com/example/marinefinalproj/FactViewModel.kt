@@ -29,22 +29,27 @@ class FactViewModel: ViewModel() {
     private var _allPreviousFacts: MutableList<String> = mutableListOf()
     val allPreviousFacts: List<String>
         get() = _allPreviousFacts
+    var shownFacts: MutableList<String> = mutableListOf()
     private var _lastThreeFacts: MutableList<String> = mutableListOf()
     val lastThreeFacts: List<String>
         get() = _lastThreeFacts
+    var _playedOrNot: Boolean = false
 
     fun assignLastThree(){
         _lastThreeFacts = mutableListOf()
         val length = _allPreviousFacts.size.toInt() - 1
         for(i in length downTo 0){
-            _lastThreeFacts.add(_allPreviousFacts[i])
+            val newFact = _allPreviousFacts[i]
+            if(!_lastThreeFacts.contains(newFact))
+            _lastThreeFacts.add(newFact)
         }
     }
 
-    fun addAndAssignFacts(db: DatabaseReference): String{
+    fun addAndAssignFacts(db: DatabaseReference, ): String{
         val randomInt = (Math.random() * 10).toInt()
         val factChosen = allFactsStrings[randomInt]
-        db.child("Fact").push().setValue(Fact(factChosen))
+        val newFact = Fact(factChosen)
+        db.child("Fact").push().setValue(newFact)
 
         db.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -55,8 +60,9 @@ class FactViewModel: ViewModel() {
                             singleFactEntry.child("factText").getValue().toString()
                         Log.i("MainActivity", "db worked")
                         if(!_allPreviousFacts.contains(factID)) {
-                            _allPreviousFacts.add(factID)
+                            shownFacts.add(factID)
                         }
+                        _allPreviousFacts.add(factID)
                     }
                 }
             }
@@ -64,6 +70,7 @@ class FactViewModel: ViewModel() {
             override fun onCancelled(error: DatabaseError) {
             }
         })
+        _playedOrNot = true
         return factChosen
     }
 }

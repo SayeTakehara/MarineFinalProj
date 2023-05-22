@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".FactPageComplexFragment">
 
-
-
     <ImageView
         android:id="@+id/fishImageOne"
         android:layout_width="wrap_content"

@@ -4,7 +4,6 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import android.view.*
-import android.view.animation.CycleInterpolator
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import android.widget.TextView
@@ -25,12 +24,15 @@ class FactPageComplexFragment : Fragment() {
     ): View? {
         _binding = FragmentFactPageComplexBinding.inflate(inflater, container, false)
         val rootView = binding.root
-        animateText(binding.textFishOne)
-        animateText(binding.textFishTwo)
-        animateText(binding.textFishThree)
-        animateFish(binding.fishImageOne)
-        animateFish(binding.fishImageTwo)
-        animateFish(binding.fishImageThree)
+        val randomOne = (Math.random() * 50).toLong()
+        val randomTwo = (Math.random() * 50).toLong()
+        val randomThree = (Math.random() * 50).toLong()
+        animateText(binding.textFishOne, randomOne)
+        animateText(binding.textFishTwo, randomTwo)
+        animateText(binding.textFishThree, randomThree)
+        animateFish(binding.fishImageOne, randomOne)
+        animateFish(binding.fishImageTwo, randomTwo)
+        animateFish(binding.fishImageThree, randomThree)
         viewModel.assignLastThree()
         val lastThree = viewModel.lastThreeFacts
         binding.textFishOne.text = if(lastThree.size > 0){
@@ -58,7 +60,7 @@ class FactPageComplexFragment : Fragment() {
         return rootView
     }
 
-    fun animateText(view: TextView){
+    fun animateText(view: TextView, random: Long){
         val animationView: ViewPropertyAnimator = view.animate()
             .translationX(
                 if(view.translationX.toFloat() < 0){
@@ -77,21 +79,19 @@ class FactPageComplexFragment : Fragment() {
                         if(view.translationX.toFloat() < 0){
                             300f
                         }
-                        else if(view.translationX.toFloat() > 0) {
+                        else {
                             -300f
-                        }
-                        else{
-                            0f
                         }
                     )
                     .setInterpolator(LinearInterpolator())
                     .setListener(this)
+                    .setStartDelay(random)
                     .setDuration(900)
                     .start()
             }
         })
     }
-    fun animateFish(view: ImageView){
+    fun animateFish(view: ImageView, random: Long){
         val animationView: ViewPropertyAnimator = view.animate()
             .translationX(
                 if(view.x.toFloat() < 0){
@@ -116,6 +116,7 @@ class FactPageComplexFragment : Fragment() {
                     )
                     .setInterpolator(LinearInterpolator())
                     .setListener(this)
+                    .setStartDelay(random)
                     .setDuration(900)
                     .start()
                 view.rotationY += 180f
