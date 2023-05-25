@@ -15,16 +15,20 @@ import com.google.firebase.database.ktx.snapshots
 
 class FactViewModel: ViewModel() {
     private var allFactsStrings: List<String> = listOf(
-        "a",
-        "b",
-        "c",
-        "d",
-        "e",
-        "f",
-        "g",
-        "h",
-        "i",
-        "j"
+        "Napoleon fish use their foreheads like a rhino horn", "Mahi Mahi means \"strong strong\"", "pufferfish make little underwater crop circles",
+        "Vampire squids, despite their name, are filter feeders", "Whale sharks are filter feeders", "squids have a small bone in their head",
+        "Coelacanth are \"living fossils\"", "cepholopods include squids, octopi, and cuttlefish", "siphonophores are colonies made of zooids",
+        "octopus ink pasta technically tastes better than squid ink", "stepping on a stone fish can poison you (ouch)", "The mimic octopus can copy corals and even rayfish",
+        "some fish can change their sexual orientation at will", "suckerfish can stick onto boats", "There was an experiment giving dolphins LSD",
+        "The Dorado is named after its golden color", "moray eels have 2 sets of jaws", "sunfish are easily pass out, even in aquariums",
+        "hammerheads travel in groups", "humbolt squids hunt in packs, earning the name \"red devil\"", "male angler fish are smaller than their female counterparts",
+        "the moon jelly's sting is very weak", "sea angels open their heads to eat (scary!)", "The phatom jelly has only been spotted only <196 times",
+        "Some Sturgeons live up to 100 years", "A Greenland shark live more than 500 years", "Thresher sharks use their tails like whips",
+        "Not a fact, but Abzû is a great game about the ocean", "Salmon change their color in the ocean", "Brine pools are very salty pools inside the ocean",
+        "A Mantis Shrimp's arms work opposite to an actual mantis's", "lobsters can change color based on diet", "Pistol shrimps can make loud and strong snaps",
+        "Clownfish can stay with anemones without stinging", "Some jellyfish use light to communicate", "Deep sea creatures tend to be bigger",
+        "Remora fish clean sharks' mouths", "Stingrays are eaten by sharks, despite their evolutionary relations", "the spotted jelly always has 8 legs",
+        "blue ringed octopus venom can kill in minutes", "immortal jellyfish can revert to previous lifecyle phases"
     )
     private var _allPreviousFacts: MutableList<String> = mutableListOf()
     val allPreviousFacts: List<String>

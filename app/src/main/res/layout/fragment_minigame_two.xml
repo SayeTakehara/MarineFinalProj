@@ -10,11 +10,14 @@
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/minigametwotitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="Brush Off the Sand!"
+        android:layout_marginEnd="16dp"
         android:gravity="center"
+        android:text="Brush Off the Sand!"
+        android:textColor="@color/black"
         android:textSize="30sp"
         app:fontFamily="@font/press_start_2p"
         app:layout_constraintEnd_toEndOf="parent"

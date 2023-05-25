@@ -23,30 +23,33 @@ class MinigameFourFragment : Fragment() {
     ): View? {
         _binding = FragmentMinigameFourBinding.inflate(inflater, container, false)
         val rootView = binding.root
-        //Minigame 4: zoom into some zooplankton
+        //Minigame 4: zoom into some small creatures
+        scaleFactor = 1f
         var gesture = ScaleGestureDetector(
             requireContext(),
             object: ScaleGestureDetector.SimpleOnScaleGestureListener() {
                 override fun onScale(detector: ScaleGestureDetector): Boolean {
-                    scaleFactor = scaleFactor * (detector.scaleFactor * 0.5f)
-                    scaleFactor = Math.max(0.1f, Math.min(scaleFactor, 5.0f))
-                    binding.imageView.scaleX = scaleFactor
-                    binding.imageView.scaleY = scaleFactor
-                    if(scaleFactor == 3.0f){
-                        val factChosen = viewModel.addAndAssignFacts(dbRef)
-                        MaterialAlertDialogBuilder(requireContext())
-                            .setTitle(factChosen)
-                            .setMessage("play again?")
-                            .setPositiveButton("Yes") { dialog, which ->
-                                binding.root.findNavController()
-                                    .navigate(MinigameFourFragmentDirections.actionMinigameFourFragmentToTitleFragment())
-                            }
-                            .setNegativeButton("No") { dialog, which ->
-                                binding.root.findNavController()
-                                    .navigate(MinigameFourFragmentDirections.actionMinigameFourFragmentToFactPageFragment())
-                            }
-                            .setCancelable(false)
-                            .show()
+                    if(scaleFactor < 45.0f){
+                        scaleFactor = scaleFactor * (detector.scaleFactor)
+                        scaleFactor = Math.max(1f, Math.min(scaleFactor, 50.0f))
+                        binding.imageView.scaleX = scaleFactor * 0.5f
+                        binding.imageView.scaleY = scaleFactor * 0.5f
+                        if(scaleFactor >= 45.0f){
+                            val factChosen = viewModel.addAndAssignFacts(dbRef)
+                            MaterialAlertDialogBuilder(requireContext())
+                                .setTitle(factChosen)
+                                .setMessage("play again?")
+                                .setPositiveButton("Yes") { dialog, which ->
+                                    binding.root.findNavController()
+                                        .navigate(MinigameFourFragmentDirections.actionMinigameFourFragmentToTitleFragment())
+                                    }
+                                .setNegativeButton("No") { dialog, which ->
+                                    binding.root.findNavController()
+                                        .navigate(MinigameFourFragmentDirections.actionMinigameFourFragmentToFactPageFragment())
+                                    }
+                                .setCancelable(false)
+                                .show()
+                        }
                     }
                     return super.onScale(detector)
                 }
