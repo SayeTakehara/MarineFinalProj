@@ -32,8 +32,8 @@ class MinigameFourFragment : Fragment() {
                     if(scaleFactor < 45.0f){
                         scaleFactor = scaleFactor * (detector.scaleFactor)
                         scaleFactor = Math.max(1f, Math.min(scaleFactor, 50.0f))
-                        binding.imageView.scaleX = scaleFactor * 0.5f
-                        binding.imageView.scaleY = scaleFactor * 0.5f
+                        binding.smallcreature.scaleX = scaleFactor * 0.5f
+                        binding.smallcreature.scaleY = scaleFactor * 0.5f
                         if(scaleFactor >= 45.0f){
                             val factChosen = viewModel.addAndAssignFacts(dbRef)
                             MaterialAlertDialogBuilder(requireContext())
