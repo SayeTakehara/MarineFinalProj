@@ -1,6 +1,7 @@
 package com.example.marinefinalproj
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -14,9 +15,9 @@ import com.google.firebase.ktx.Firebase
 class MinigameFourFragment : Fragment() {
     private var _binding : FragmentMinigameFourBinding? = null
     private val binding get() = _binding!!
-    var dbRef : DatabaseReference = Firebase.database.reference
     private val viewModel: FactViewModel by activityViewModels()
     private var scaleFactor = 1f
+    private val randomNumber: Int = (Math.random() * 49 + 51).toInt()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,13 +30,13 @@ class MinigameFourFragment : Fragment() {
             requireContext(),
             object: ScaleGestureDetector.SimpleOnScaleGestureListener() {
                 override fun onScale(detector: ScaleGestureDetector): Boolean {
-                    if(scaleFactor < 45.0f){
+                    if(scaleFactor < randomNumber.toLong() + 5){
                         scaleFactor = scaleFactor * (detector.scaleFactor)
-                        scaleFactor = Math.max(1f, Math.min(scaleFactor, 50.0f))
+                        scaleFactor = Math.max(1f, Math.min(scaleFactor, 100.0f))
                         binding.smallcreature.scaleX = scaleFactor * 0.5f
                         binding.smallcreature.scaleY = scaleFactor * 0.5f
-                        if(scaleFactor >= 45.0f){
-                            val factChosen = viewModel.addAndAssignFacts(dbRef)
+                        if(scaleFactor >= randomNumber.toLong()){
+                            val factChosen = viewModel.addAndAssignFacts()
                             MaterialAlertDialogBuilder(requireContext())
                                 .setTitle(factChosen)
                                 .setMessage("play again?")

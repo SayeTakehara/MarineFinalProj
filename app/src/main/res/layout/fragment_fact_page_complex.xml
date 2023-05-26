@@ -7,92 +7,104 @@
     tools:context=".FactPageComplexFragment"
     android:background="@color/teal_200">
 
-    <ImageView
-        android:id="@+id/fishImageOne"
-        android:layout_width="wrap_content"
-        android:layout_height="250dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/fishfactone"
-        android:rotationY="180"
+    <HorizontalScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"
-        />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textFishOne"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:gravity="center"
-        android:text="TextView"
-        android:textSize="16dp"
-        app:fontFamily="casual"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/fishImageTwo"
-        android:layout_width="wrap_content"
-        android:layout_height="250dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/fishfacttwo"
-        android:rotationY="180"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        />
+            <ImageView
+                android:id="@+id/fishImageOne"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:rotationY="180"
+                android:scaleType="centerInside"
+                android:src="@drawable/fishfactone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.1" />
 
-    <TextView
-        android:id="@+id/textFishTwo"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:gravity="center"
-        android:text="TextView"
-        android:textSize="16dp"
-        app:fontFamily="casual"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.53"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textFishOne"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="TextView"
+                android:textSize="16dp"
+                app:fontFamily="casual"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.25" />
 
-    <ImageView
-        android:id="@+id/fishImageThree"
-        android:layout_width="wrap_content"
-        android:layout_height="250dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/fishfactthree"
-        android:rotationY="180"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1"
-        />
+            <ImageView
+                android:id="@+id/fishImageTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:rotationY="180"
+                android:scaleType="fitcenter"
+                android:src="@drawable/fishfacttwo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
 
-    <TextView
-        android:id="@+id/textFishThree"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        app:fontFamily="casual"
-        android:gravity="center"
-        android:text="TextView"
-        android:textSize="16dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
+            <TextView
+                android:id="@+id/textFishTwo"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="TextView"
+                android:textSize="16dp"
+                app:fontFamily="casual"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.53" />
+
+            <ImageView
+                android:id="@+id/fishImageThree"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:rotationY="180"
+                android:scaleType="fitcenter"
+                android:src="@drawable/fishfactthree"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1" />
+
+            <TextView
+                android:id="@+id/textFishThree"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="TextView"
+                android:textSize="16dp"
+                app:fontFamily="casual"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.85" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </HorizontalScrollView>
+
 
     <Button
         android:id="@+id/backtotitlebutton"

@@ -17,7 +17,6 @@ class MinigameThreeFragment : Fragment() {
     private var _binding : FragmentMinigameThreeBinding? = null
     private val binding get() = _binding!!
     private var totalScrolled = 0
-    var dbRef : DatabaseReference = Firebase.database.reference
     private val viewModel: FactViewModel by activityViewModels()
     private val randomTimes = ((Math.random() * 50) + 2000).toInt()
     private val gesture = GestureDetector(
@@ -37,11 +36,11 @@ class MinigameThreeFragment : Fragment() {
                     totalScrolled += distanceY.toInt()
                     if(totalScrolled < randomTimes) {
                         binding.background.animate()
-                            .translationYBy(-distanceY * 2)
+                            .translationYBy(-distanceY * 7)
                             .start()
                     }
                     else{
-                        val factChosen = viewModel.addAndAssignFacts(dbRef)
+                        val factChosen = viewModel.addAndAssignFacts()
                         MaterialAlertDialogBuilder(requireContext())
                             .setTitle(factChosen)
                             .setMessage("play again?")

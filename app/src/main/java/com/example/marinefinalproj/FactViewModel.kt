@@ -11,7 +11,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.snapshots
+import com.google.firebase.ktx.Firebase
 
 class FactViewModel: ViewModel() {
     private var allFactsStrings: List<String> = listOf(
@@ -38,6 +40,7 @@ class FactViewModel: ViewModel() {
     val lastThreeFacts: List<String>
         get() = _lastThreeFacts
     var _playedOrNot: Boolean = false
+    val db: DatabaseReference = Firebase.database.reference
 
     fun assignLastThree(){
         _lastThreeFacts = mutableListOf()
@@ -49,7 +52,7 @@ class FactViewModel: ViewModel() {
         }
     }
 
-    fun addAndAssignFacts(db: DatabaseReference, ): String{
+    fun addAndAssignFacts(): String{
         val randomInt = (Math.random() * 10).toInt()
         val factChosen = allFactsStrings[randomInt]
         val newFact = Fact(factChosen)
@@ -62,7 +65,6 @@ class FactViewModel: ViewModel() {
                     for (singleFactEntry in allFactEntries.children) {
                         val factID =
                             singleFactEntry.child("factText").getValue().toString()
-                        Log.i("MainActivity", "db worked")
                         if(!_allPreviousFacts.contains(factID)) {
                             shownFacts.add(factID)
                         }

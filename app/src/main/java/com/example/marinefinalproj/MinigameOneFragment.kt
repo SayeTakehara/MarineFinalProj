@@ -17,7 +17,6 @@ import com.google.firebase.ktx.Firebase
 class MinigameOneFragment : Fragment() {
     private var _binding : FragmentMinigameOneBinding? = null
     private val binding get() = _binding!!
-    lateinit var dbRef : DatabaseReference
     private val viewModel: FactViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +24,6 @@ class MinigameOneFragment : Fragment() {
     ): View? {
         _binding = FragmentMinigameOneBinding.inflate(inflater, container, false)
         val rootView = binding.root
-        dbRef = Firebase.database.reference
         // Minigame 1: Press a button multiple times, maybe fishing something up? YEPPERS
         var timesPressed = 0
         val random = ((Math.random() * 20) + 10).toInt()
@@ -51,8 +49,7 @@ class MinigameOneFragment : Fragment() {
                 binding.fishImage.animate()
                     .translationY(-700f)
                     .withEndAction {
-                        Log.i("MainActivity", "please work please")
-                        val factChosen = viewModel.addAndAssignFacts(dbRef)
+                        val factChosen = viewModel.addAndAssignFacts()
                         MaterialAlertDialogBuilder(requireContext())
                             .setTitle(factChosen)
                             .setMessage("play again?")

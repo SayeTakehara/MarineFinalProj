@@ -19,7 +19,6 @@ class MinigameTwoFragment : Fragment() {
     private val binding get() = _binding!!
     private var timesFlinged = 0
     private val randomTimes = ((Math.random() * 10) + 7).toInt()
-    var dbRef : DatabaseReference = Firebase.database.reference
     private val viewModel: FactViewModel by activityViewModels()
     private val gesture = GestureDetector(
         activity,
@@ -53,7 +52,7 @@ class MinigameTwoFragment : Fragment() {
                         binding.textFlickedBackground.visibility = View.INVISIBLE
                         binding.timesFlickedText.visibility = View.INVISIBLE
                         if (timesFlinged >= randomTimes) {
-                            val factChosen = viewModel.addAndAssignFacts(dbRef)
+                            val factChosen = viewModel.addAndAssignFacts()
                             MaterialAlertDialogBuilder(requireContext())
                                 .setTitle(factChosen)
                                 .setMessage("play again?")
