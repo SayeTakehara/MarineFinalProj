@@ -1,6 +1,5 @@
 package com.example.marinefinalproj
 
-import android.content.res.Resources
 import com.example.marinefinalproj.databinding.ListItemBinding
 import androidx.recyclerview.widget.RecyclerView
 

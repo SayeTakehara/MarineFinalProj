@@ -1,7 +1,6 @@
 package com.example.marinefinalproj
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +9,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.marinefinalproj.databinding.FragmentMinigameOneBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 
 class MinigameOneFragment : Fragment() {
     private var _binding : FragmentMinigameOneBinding? = null
@@ -50,7 +46,7 @@ class MinigameOneFragment : Fragment() {
                     .translationY(-700f)
                     .withEndAction {
                         val factChosen = viewModel.addAndAssignFacts()
-                        MaterialAlertDialogBuilder(requireContext())
+                        MaterialAlertDialogBuilder(requireContext(), R.style.AltertDialog)
                             .setTitle(factChosen)
                             .setMessage("play again?")
                             .setPositiveButton("Yes") { dialog, which ->

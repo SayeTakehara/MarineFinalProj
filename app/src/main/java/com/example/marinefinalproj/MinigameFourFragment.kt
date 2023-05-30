@@ -1,16 +1,12 @@
 package com.example.marinefinalproj
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.marinefinalproj.databinding.FragmentMinigameFourBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 
 class MinigameFourFragment : Fragment() {
     private var _binding : FragmentMinigameFourBinding? = null
@@ -37,7 +33,7 @@ class MinigameFourFragment : Fragment() {
                         binding.smallcreature.scaleY = scaleFactor * 0.5f
                         if(scaleFactor >= randomNumber.toLong()){
                             val factChosen = viewModel.addAndAssignFacts()
-                            MaterialAlertDialogBuilder(requireContext())
+                            MaterialAlertDialogBuilder(requireContext(), R.style.AltertDialog)
                                 .setTitle(factChosen)
                                 .setMessage("play again?")
                                 .setPositiveButton("Yes") { dialog, which ->

@@ -1,18 +1,11 @@
 package com.example.marinefinalproj
 
-import android.content.Context
-import android.content.res.Resources
-import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.navigation.NavDirections
-import androidx.navigation.findNavController
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.snapshots
 import com.google.firebase.ktx.Firebase
 
 class FactViewModel: ViewModel() {
@@ -33,8 +26,6 @@ class FactViewModel: ViewModel() {
         "blue ringed octopus venom can kill in minutes", "immortal jellyfish can revert to previous lifecyle phases"
     )
     private var _allPreviousFacts: MutableList<String> = mutableListOf()
-    val allPreviousFacts: List<String>
-        get() = _allPreviousFacts
     var shownFacts: MutableList<String> = mutableListOf()
     private var _lastThreeFacts: MutableList<String> = mutableListOf()
     val lastThreeFacts: List<String>
@@ -55,20 +46,18 @@ class FactViewModel: ViewModel() {
     fun addAndAssignFacts(): String{
         val randomInt = (Math.random() * 10).toInt()
         val factChosen = allFactsStrings[randomInt]
-        val newFact = Fact(factChosen)
-        db.child("Fact").push().setValue(newFact)
+        db.child("Fact").push().setValue(factChosen)
 
         db.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val allDBEntries = snapshot.children
                 for (allFactEntries in allDBEntries) {
                     for (singleFactEntry in allFactEntries.children) {
-                        val factID =
-                            singleFactEntry.child("factText").getValue().toString()
-                        if(!_allPreviousFacts.contains(factID)) {
-                            shownFacts.add(factID)
+                        val factText: String = singleFactEntry.value.toString()
+                        if(!_allPreviousFacts.contains(factText)) {
+                            shownFacts.add(factText)
                         }
-                        _allPreviousFacts.add(factID)
+                        _allPreviousFacts.add(factText)
                     }
                 }
             }

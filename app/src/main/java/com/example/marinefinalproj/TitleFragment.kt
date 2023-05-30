@@ -1,17 +1,12 @@
 package com.example.marinefinalproj
 
-import android.animation.Animator
 import android.os.Bundle
 import android.view.*
-import android.view.animation.CycleInterpolator
-import android.view.animation.LinearInterpolator
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavDirections
-import androidx.navigation.NavGraph
 import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.example.marinefinalproj.databinding.FragmentTitleBinding
 
 class TitleFragment : Fragment() {

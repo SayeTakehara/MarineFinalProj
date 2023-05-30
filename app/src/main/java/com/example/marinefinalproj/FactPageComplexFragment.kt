@@ -36,19 +36,19 @@ class FactPageComplexFragment : Fragment() {
         viewModel.assignLastThree()
         val lastThree = viewModel.lastThreeFacts
         binding.textFishOne.text = if(lastThree.size > 0){
-            lastThree[0].toString()
+            lastThree[0]
         }
         else{
             ""
         }
         binding.textFishTwo.text = if(lastThree.size > 1){
-            lastThree[1].toString()
+            lastThree[1]
         }
         else{
             ""
         }
         binding.textFishThree.text = if(lastThree.size > 2){
-            lastThree[2].toString()
+            lastThree[2]
         }
         else{
             ""
@@ -63,30 +63,30 @@ class FactPageComplexFragment : Fragment() {
     fun animateText(view: TextView, random: Long){
         val animationView: ViewPropertyAnimator = view.animate()
             .translationX(
-                if(view.translationX.toFloat() < 0){
-                    300f
+                if(view.translationX < 0){
+                    500f
                 }
                 else{
-                    -300f
+                    -500f
                 }
             )
             .setInterpolator(LinearInterpolator())
-            .setDuration(900)
+            .setDuration(1200)
         animationView.setListener(object: AnimatorListenerAdapter(){
             override fun onAnimationEnd(animation: Animator) {
                 view.animate()
                     .translationX(
-                        if(view.translationX.toFloat() < 0){
-                            300f
+                        if(view.translationX < 0){
+                            500f
                         }
                         else {
-                            -300f
+                            -500f
                         }
                     )
                     .setInterpolator(LinearInterpolator())
                     .setListener(this)
                     .setStartDelay(random)
-                    .setDuration(900)
+                    .setDuration(1200)
                     .start()
             }
         })
@@ -94,30 +94,30 @@ class FactPageComplexFragment : Fragment() {
     fun animateFish(view: ImageView, random: Long){
         val animationView: ViewPropertyAnimator = view.animate()
             .translationX(
-                if(view.x.toFloat() < 0){
-                    300f
+                if(view.x < 0){
+                    500f
                 }
                 else{
-                    -300f
+                    -500f
                 }
             )
             .setInterpolator(LinearInterpolator())
-            .setDuration(900)
+            .setDuration(1200)
         animationView.setListener(object: AnimatorListenerAdapter(){
             override fun onAnimationEnd(animation: Animator) {
                 view.animate()
                     .translationX(
-                        if(view.x.toFloat() < 0){
-                            300f
+                        if(view.x < 0){
+                            500f
                         }
                         else{
-                            -300f
+                            -500f
                         }
                     )
                     .setInterpolator(LinearInterpolator())
                     .setListener(this)
                     .setStartDelay(random)
-                    .setDuration(900)
+                    .setDuration(1200)
                     .start()
                 view.rotationY += 180f
             }

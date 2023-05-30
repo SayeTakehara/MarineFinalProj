@@ -1,17 +1,12 @@
 package com.example.marinefinalproj
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import com.example.marinefinalproj.databinding.FragmentMinigameTwoBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 
 
 class MinigameTwoFragment : Fragment() {
@@ -53,7 +48,7 @@ class MinigameTwoFragment : Fragment() {
                         binding.timesFlickedText.visibility = View.INVISIBLE
                         if (timesFlinged >= randomTimes) {
                             val factChosen = viewModel.addAndAssignFacts()
-                            MaterialAlertDialogBuilder(requireContext())
+                            MaterialAlertDialogBuilder(requireContext(), R.style.AltertDialog)
                                 .setTitle(factChosen)
                                 .setMessage("play again?")
                                 .setPositiveButton("Yes") { dialog, which ->
