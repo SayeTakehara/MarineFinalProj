@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/takeharas24/AndroidStudioProjects/MarineFinalProj/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18" />
+        <entry key="..\:/Users/takeharas24/AndroidStudioProjects/MarineFinalProj/app/src/main/res/drawable/ic_launcher_background.xml" value="0.18" />
         <entry key="..\:/Users/takeharas24/AndroidStudioProjects/MarineFinalProj/app/src/main/res/layout/activity_main.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/takeharas24/AndroidStudioProjects/MarineFinalProj/app/src/main/res/layout/alert_dialog_custom_layout.xml" value="0.271875" />
         <entry key="..\:/Users/takeharas24/AndroidStudioProjects/MarineFinalProj/app/src/main/res/layout/fragment_fact_page.xml" value="0.25885416666666666" />
