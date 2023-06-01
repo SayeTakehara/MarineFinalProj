@@ -20,7 +20,7 @@ class TitleFragment : Fragment() {
         _binding = FragmentTitleBinding.inflate(inflater, container, false)
         val rootView = binding.root
         binding.playButton.setOnClickListener{
-            var randomNum: Int = (Math.random() * 5).toInt()
+            var randomNum: Int = (Math.random() * 4).toInt()
             var action: NavDirections = TitleFragmentDirections.actionTitleFragmentToMinigameOneFragment()
             when(randomNum){
                 0 -> action = TitleFragmentDirections.actionTitleFragmentToMinigameOneFragment()

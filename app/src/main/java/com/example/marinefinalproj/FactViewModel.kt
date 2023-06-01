@@ -23,7 +23,7 @@ class FactViewModel: ViewModel() {
         "A Mantis Shrimp's arms work opposite to an actual mantis's", "lobsters can change color based on diet", "Pistol shrimps can make loud and strong snaps",
         "Clownfish can stay with anemones without stinging", "Some jellyfish use light to communicate", "Deep sea creatures tend to be bigger",
         "Remora fish clean sharks' mouths", "Stingrays are eaten by sharks, despite their evolutionary relations", "the spotted jelly always has 8 legs",
-        "blue ringed octopus venom can kill in minutes", "immortal jellyfish can revert to previous lifecyle phases"
+        "blue ringed octopus venom can kill in minutes", "immortal jellyfish can revert to previous lifecycle phases"
     )
     private var _allPreviousFacts: MutableList<String> = mutableListOf()
     var shownFacts: MutableList<String> = mutableListOf()

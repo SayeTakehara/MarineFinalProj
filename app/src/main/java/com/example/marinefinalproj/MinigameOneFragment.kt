@@ -22,7 +22,7 @@ class MinigameOneFragment : Fragment() {
         val rootView = binding.root
         // Minigame 1: Press a button multiple times, maybe fishing something up? YEPPERS
         var timesPressed = 0
-        val random = ((Math.random() * 20) + 10).toInt()
+        val random = ((Math.random() * 10) + 5).toInt()
         binding.timesPressedText.text = timesPressed.toString()
         binding.reelImageButton.setOnClickListener {
             val gameFinished = timesPressed > random
@@ -55,6 +55,7 @@ class MinigameOneFragment : Fragment() {
                             .setNegativeButton("No"){ dialog, which ->
                                 rootView.findNavController().navigate(MinigameOneFragmentDirections.actionMinigameOneFragmentToFactPageFragment())
                             }
+                            .setCancelable(false)
                             .show()
                         timesPressed = 0
                     }

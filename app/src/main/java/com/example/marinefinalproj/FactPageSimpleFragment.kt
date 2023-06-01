@@ -1,7 +1,10 @@
 package com.example.marinefinalproj
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import android.view.*
+import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
@@ -25,6 +28,8 @@ class FactPageSimpleFragment : Fragment() {
         setHasOptionsMenu(true)
         return rootView
     }
+
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.options_menu_simple, menu)

@@ -71,7 +71,7 @@ class FactPageComplexFragment : Fragment() {
                 }
             )
             .setInterpolator(LinearInterpolator())
-            .setDuration(1200)
+            .setDuration(2000)
         animationView.setListener(object: AnimatorListenerAdapter(){
             override fun onAnimationEnd(animation: Animator) {
                 view.animate()
@@ -86,7 +86,7 @@ class FactPageComplexFragment : Fragment() {
                     .setInterpolator(LinearInterpolator())
                     .setListener(this)
                     .setStartDelay(random)
-                    .setDuration(1200)
+                    .setDuration(2000)
                     .start()
             }
         })
@@ -102,7 +102,7 @@ class FactPageComplexFragment : Fragment() {
                 }
             )
             .setInterpolator(LinearInterpolator())
-            .setDuration(1200)
+            .setDuration(2000)
         animationView.setListener(object: AnimatorListenerAdapter(){
             override fun onAnimationEnd(animation: Animator) {
                 view.animate()
@@ -117,7 +117,7 @@ class FactPageComplexFragment : Fragment() {
                     .setInterpolator(LinearInterpolator())
                     .setListener(this)
                     .setStartDelay(random)
-                    .setDuration(1200)
+                    .setDuration(2000)
                     .start()
                 view.rotationY += 180f
             }
