@@ -21,7 +21,7 @@
             app:destination="@id/minigameThreeFragment" />
         <action
             android:id="@+id/action_titleFragment_to_factPageFragment"
-            app:destination="@id/factPageFragment" />
+            app:destination="@id/factPageComplexFragment" />
         <action
             android:id="@+id/action_titleFragment_to_minigameFourFragment"
             app:destination="@id/minigameFourFragment" />
@@ -33,7 +33,7 @@
         tools:layout="@layout/fragment_minigame_one" >
         <action
             android:id="@+id/action_minigameOneFragment_to_factPageFragment"
-            app:destination="@id/factPageFragment" />
+            app:destination="@id/factPageComplexFragment" />
         <action
             android:id="@+id/action_minigameOneFragment_to_titleFragment"
             app:destination="@id/titleFragment" />
@@ -45,7 +45,7 @@
         tools:layout="@layout/fragment_minigame_two" >
         <action
             android:id="@+id/action_minigameTwoFragment_to_factPageFragment"
-            app:destination="@id/factPageFragment" />
+            app:destination="@id/factPageComplexFragment" />
         <action
             android:id="@+id/action_minigameTwoFragment_to_titleFragment"
             app:destination="@id/titleFragment" />
@@ -57,13 +57,13 @@
         tools:layout="@layout/fragment_minigame_three" >
         <action
             android:id="@+id/action_minigameThreeFragment_to_factPageFragment"
-            app:destination="@id/factPageFragment" />
+            app:destination="@id/factPageComplexFragment" />
         <action
             android:id="@+id/action_minigameThreeFragment_to_titleFragment"
             app:destination="@id/titleFragment" />
     </fragment>
     <fragment
-        android:id="@+id/factPageFragment"
+        android:id="@+id/factPageComplexFragment"
         android:name="com.example.marinefinalproj.FactPageComplexFragment"
         android:label="fragment_fact_page"
         tools:layout="@layout/fragment_fact_page_complex" >
@@ -81,7 +81,7 @@
         tools:layout="@layout/fragment_fact_page_simple" >
         <action
             android:id="@+id/action_factPageSimpleFragment_to_factPageFragment"
-            app:destination="@id/factPageFragment" />
+            app:destination="@id/factPageComplexFragment" />
     </fragment>
     <fragment
         android:id="@+id/minigameFourFragment"
@@ -90,7 +90,7 @@
         tools:layout="@layout/fragment_minigame_four" >
         <action
             android:id="@+id/action_minigameFourFragment_to_factPageFragment"
-            app:destination="@id/factPageFragment" />
+            app:destination="@id/factPageComplexFragment" />
         <action
             android:id="@+id/action_minigameFourFragment_to_titleFragment"
             app:destination="@id/titleFragment" />
